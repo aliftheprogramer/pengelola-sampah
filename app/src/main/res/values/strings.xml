@@ -13,5 +13,11 @@
     <string name="message_main_page">Selamat Belajar di Dicoding.</string>
     <string name="greeting">Halo %1$s,</string>
     <string name="logout">Keluar</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="your_web_client_id">500060358006-g7d0vsku3sj1h0veanjg8s5qisv1oqm2.apps.googleusercontent.com</string>
+
 
 </resources>

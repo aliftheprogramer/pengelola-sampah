@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "500060358006",
+    "project_id": "loginwithanimation-2d88b",
+    "storage_bucket": "loginwithanimation-2d88b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500060358006:android:c2fe4c0fb0aed49f726657",
+        "android_client_info": {
+          "package_name": "com.dicoding.picodiploma.loginwithanimation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500060358006-dirlhvuvf21fo7t64tmvusfuk7bpouij.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.picodiploma.loginwithanimation",
+            "certificate_hash": "0079e99fb4d4948f6daa8e8338299f32478878c9"
+          }
+        },
+        {
+          "client_id": "500060358006-g7d0vsku3sj1h0veanjg8s5qisv1oqm2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7bNaplJD4VscSq6BPgGW_l-0bGFg-M20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500060358006-g7d0vsku3sj1h0veanjg8s5qisv1oqm2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

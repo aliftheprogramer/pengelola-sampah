@@ -1,11 +1,14 @@
 package com.dicoding.picodiploma.loginwithanimation.data
 
+import com.dicoding.picodiploma.loginwithanimation.data.database.User
+import com.dicoding.picodiploma.loginwithanimation.data.database.UserDao
 import com.dicoding.picodiploma.loginwithanimation.data.pref.UserModel
 import com.dicoding.picodiploma.loginwithanimation.data.pref.UserPreference
 import kotlinx.coroutines.flow.Flow
 
 class UserRepository private constructor(
-    private val userPreference: UserPreference
+    private val userPreference: UserPreference,
+    private val userDao: UserDao
 ) {
 
     suspend fun saveSession(user: UserModel) {
@@ -20,14 +23,19 @@ class UserRepository private constructor(
         userPreference.logout()
     }
 
+    suspend fun insertUser(user: User) {
+        userDao.insert(user)
+    }
+
     companion object {
         @Volatile
         private var instance: UserRepository? = null
         fun getInstance(
-            userPreference: UserPreference
+            userPreference: UserPreference,
+            userDao: UserDao
         ): UserRepository =
             instance ?: synchronized(this) {
-                instance ?: UserRepository(userPreference)
+                instance ?: UserRepository(userPreference, userDao)
             }.also { instance = it }
     }
 }
