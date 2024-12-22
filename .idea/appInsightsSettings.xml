@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.dicoding.picodiploma.loginwithanimation" />
+                  <option name="mobileSdkAppId" value="1:500060358006:android:c2fe4c0fb0aed49f726657" />
+                  <option name="projectId" value="loginwithanimation-2d88b" />
+                  <option name="projectNumber" value="500060358006" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
