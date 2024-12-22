@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.dicoding.picodiploma.loginwithanimation.view.main.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_jemput_sampah"
+            app:destination="@id/navigation_jemput_sampah" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_order"
@@ -28,4 +32,11 @@
         android:name="com.dicoding.picodiploma.loginwithanimation.view.main.ui.profil.ProfilFragment"
         android:label="ProfilFragment"
         tools:layout="@layout/fragment_profil" />
+
+    <fragment
+        android:id="@+id/navigation_jemput_sampah"
+        android:name="com.dicoding.picodiploma.loginwithanimation.view.main.ui.jemputsampah.JemputSampahFragment"
+        android:label="Jemput Sampah"
+        tools:layout="@layout/fragment_jemput_sampah" />
+
 </navigation>

@@ -12,7 +12,6 @@ import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityMainBinding
 import com.dicoding.picodiploma.loginwithanimation.view.ViewModelFactory
 import com.dicoding.picodiploma.loginwithanimation.view.login.LoginActivity
-import com.dicoding.picodiploma.loginwithanimation.view.welcome.WelcomeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -25,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -36,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         val firebaseUser = auth.currentUser
 
         if (firebaseUser == null) {
-            // Not signed in, launch the Login activity
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
             return
@@ -54,19 +51,12 @@ class MainActivity : AppCompatActivity() {
             )
         )
         navView.setupWithNavController(navController)
-
-        mainViewModel.userSession.observe(this) { user ->
-            if (user == null || !user.isLogin) {
-                val intent = Intent(this, WelcomeActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-        }
     }
-    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+
     override fun onBackPressed() {
-        if (auth.currentUser != null) {
-            finishAffinity() // Close the app
+        val navController = findNavController(R.id.fragment_container)
+        if (navController.currentDestination?.id == R.id.navigation_home) {
+            finishAffinity()
         } else {
             super.onBackPressed()
         }

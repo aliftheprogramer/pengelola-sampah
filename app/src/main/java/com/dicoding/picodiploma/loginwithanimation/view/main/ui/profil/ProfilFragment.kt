@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.databinding.FragmentProfilBinding
 import com.dicoding.picodiploma.loginwithanimation.view.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -36,5 +37,11 @@ class ProfilFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val bottomNav = requireActivity().findViewById<View>(R.id.nav_view)
+        bottomNav.visibility = View.VISIBLE
     }
 }

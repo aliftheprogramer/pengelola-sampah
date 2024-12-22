@@ -4,25 +4,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
+import com.dicoding.picodiploma.loginwithanimation.data.database.datasampah.JemputSampah
+import com.dicoding.picodiploma.loginwithanimation.data.database.datasampah.JemputSampahDao
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class, JemputSampah::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
-
-    companion object {
-        @Volatile
-        private var INSTANCE: AppDatabase? = null
-
-        fun getDatabase(context: Context): AppDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "app_database"
-                ).build()
-                INSTANCE = instance
-                instance
-            }
-        }
-    }
+    abstract fun jemputSampahDao(): JemputSampahDao
 }

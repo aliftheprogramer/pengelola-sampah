@@ -21,4 +21,11 @@
     <string name="saldo_riwayat_icon"><![CDATA[Saldo & Riwayat Icon]]></string>
 
 
+    <string-array name="kategori_sampah">
+        <item>Anorganik</item>
+        <item>Organik</item>
+        <item>Berbahaya</item>
+    </string-array>
+
+
 </resources>
