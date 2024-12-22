@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "500060358006-sit1lalk12fk7lqpoubul2fdm6ms86gs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.picodiploma.loginwithanimation",
+            "certificate_hash": "e84723cb4dad8717af82d19e1091612bfcdf46c2"
+          }
+        },
+        {
           "client_id": "500060358006-g7d0vsku3sj1h0veanjg8s5qisv1oqm2.apps.googleusercontent.com",
           "client_type": 3
         }

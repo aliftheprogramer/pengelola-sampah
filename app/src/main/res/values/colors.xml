@@ -5,5 +5,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="navy">#2D3D4F</color>
+    <color name="colorPrimary">#478129</color>
+    <color name="colorPrimaryDark">#F44336</color>
 
 </resources>
