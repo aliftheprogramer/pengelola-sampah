@@ -12,5 +12,6 @@ data class JemputSampah(
     val tanggal: String,
     val alamat: String,
     val catatan: String?,
-    val new_column: String? // Add this line
+    val new_column: String?,
+    val paymentMethod: String
 )

@@ -2,18 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.dicoding.picodiploma.loginwithanimation.view.main.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_jemput_sampah"
-            app:destination="@id/navigation_jemput_sampah" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_order"
@@ -38,5 +34,11 @@
         android:name="com.dicoding.picodiploma.loginwithanimation.view.main.ui.jemputsampah.JemputSampahFragment"
         android:label="Jemput Sampah"
         tools:layout="@layout/fragment_jemput_sampah" />
+
+    <fragment
+        android:id="@+id/navigation_jenis_sampah"
+        android:name="com.dicoding.picodiploma.loginwithanimation.view.main.ui.jenissampah.JenisSampahFragment"
+        android:label="Jenis Sampah"
+        tools:layout="@layout/fragment_jenis_sampah" />
 
 </navigation>

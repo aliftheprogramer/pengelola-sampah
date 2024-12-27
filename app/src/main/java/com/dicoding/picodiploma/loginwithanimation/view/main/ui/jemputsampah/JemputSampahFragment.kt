@@ -1,15 +1,15 @@
 package com.dicoding.picodiploma.loginwithanimation.view.main.ui.jemputsampah
 
 import android.app.DatePickerDialog
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.data.database.datasampah.JemputSampah
@@ -18,10 +18,6 @@ import com.dicoding.picodiploma.loginwithanimation.view.ViewModelFactory
 import java.util.Calendar
 
 class JemputSampahFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = JemputSampahFragment()
-    }
 
     private var _binding: FragmentJemputSampahBinding? = null
     private val binding get() = _binding!!
@@ -64,7 +60,7 @@ class JemputSampahFragment : Fragment() {
             val tanggal = binding.inputTanggal.text.toString()
             val alamat = binding.inputAlamat.text.toString()
             val catatan = binding.inputTambahan.text.toString()
-            val newColumn = "kalo ga ada kolom ini jadi eror"
+            val paymentMethod = binding.spPaymentMethod.selectedItem.toString()
 
             if (nama.isNotEmpty() && kategori.isNotEmpty() && berat > 0 && tanggal.isNotEmpty() && alamat.isNotEmpty()) {
                 val jemputSampah = JemputSampah(
@@ -74,7 +70,8 @@ class JemputSampahFragment : Fragment() {
                     tanggal = tanggal,
                     alamat = alamat,
                     catatan = catatan,
-                    new_column = newColumn
+                    new_column = "default_value", // Ensure this field is not null
+                    paymentMethod = paymentMethod
                 )
                 viewModel.saveJemputSampah(jemputSampah)
                 Toast.makeText(requireContext(), "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
@@ -84,7 +81,6 @@ class JemputSampahFragment : Fragment() {
             }
         }
 
-        // Handle back button press
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().navigate(R.id.navigation_home)
@@ -93,10 +89,14 @@ class JemputSampahFragment : Fragment() {
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
-        // Set up toolbar navigation
         val toolbar: Toolbar = view.findViewById(R.id.toolbar)
         toolbar.setNavigationOnClickListener {
             findNavController().navigate(R.id.navigation_home)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

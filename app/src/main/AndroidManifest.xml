@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
@@ -9,11 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginWithAnimation">
+
         <activity
             android:name=".view.main.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true"
             android:label="@string/title_activity_main">
         </activity>
+
         <activity
             android:name=".view.welcome.WelcomeActivity"
             android:exported="true">
@@ -22,9 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".view.signup.SignupActivity"
             android:exported="false" />
+
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="false" />

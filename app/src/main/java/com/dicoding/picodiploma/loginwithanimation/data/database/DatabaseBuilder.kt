@@ -2,6 +2,7 @@ package com.dicoding.picodiploma.loginwithanimation.data.database
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
@@ -13,10 +14,9 @@ object DatabaseBuilder {
             synchronized(AppDatabase::class) {
                 INSTANCE = Room.databaseBuilder(
                     context.applicationContext,
-                    AppDatabase::class.java,
-                    "app_database"
-                )
-                    .addMigrations(MIGRATION_1_2)
+                    AppDatabase::class.java, "app_database"
+                ).setJournalMode(RoomDatabase.JournalMode.TRUNCATE)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                     .build()
             }
         }
@@ -25,7 +25,6 @@ object DatabaseBuilder {
 
     val MIGRATION_1_2 = object : Migration(1, 2) {
         override fun migrate(db: SupportSQLiteDatabase) {
-            // Create the jemput_sampah table if it does not exist
             db.execSQL("""
             CREATE TABLE IF NOT EXISTS jemput_sampah (
                 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -35,24 +34,30 @@ object DatabaseBuilder {
                 tanggal TEXT NOT NULL,
                 alamat TEXT NOT NULL,
                 catatan TEXT,
-                new_column TEXT
+                new_column TEXT,
+                paymentMethod TEXT NOT NULL
             )
         """.trimIndent())
+        }
+    }
 
-            // Add the isLogin column to the user table if it does not exist
-            val cursor = db.query("PRAGMA table_info(user)")
-            var isLoginColumnExists = false
+    val MIGRATION_2_3 = object : Migration(2, 3) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            // Check if the column already exists
+            val cursor = db.query("PRAGMA table_info(jemput_sampah)")
+            var columnExists = false
             while (cursor.moveToNext()) {
                 val columnName = cursor.getString(cursor.getColumnIndexOrThrow("name"))
-                if (columnName == "isLogin") {
-                    isLoginColumnExists = true
+                if (columnName == "paymentMethod") {
+                    columnExists = true
                     break
                 }
             }
             cursor.close()
 
-            if (!isLoginColumnExists) {
-                db.execSQL("ALTER TABLE user ADD COLUMN isLogin INTEGER NOT NULL DEFAULT 0")
+            // Add the column if it does not exist
+            if (!columnExists) {
+                db.execSQL("ALTER TABLE jemput_sampah ADD COLUMN paymentMethod TEXT NOT NULL DEFAULT ''")
             }
         }
     }

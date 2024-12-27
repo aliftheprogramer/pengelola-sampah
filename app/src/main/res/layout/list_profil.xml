@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btnUbahProfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ubah Profil"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnPanduan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Panduan"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnSyaratKetentuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Syarat dan Ketentuan"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnSosialMedia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sosial Media"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_marginBottom="8dp" />
+
+</LinearLayout>

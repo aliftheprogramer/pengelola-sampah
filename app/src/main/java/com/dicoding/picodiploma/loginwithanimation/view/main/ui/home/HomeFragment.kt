@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.databinding.FragmentHomeBinding
-import com.dicoding.picodiploma.loginwithanimation.view.main.ui.jemputsampah.JemputSampahFragment
 
 class HomeFragment : Fragment() {
 
@@ -18,8 +16,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -36,6 +33,10 @@ class HomeFragment : Fragment() {
         binding.jemputSampah.setOnClickListener {
             findNavController().navigate(R.id.navigation_jemput_sampah)
         }
+
+        binding.cvKategori.setOnClickListener {
+            findNavController().navigate(R.id.navigation_jenis_sampah)
+        }
     }
 
     override fun onResume() {
@@ -48,5 +49,4 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -26,7 +26,9 @@ class OrderFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val adapter = OrderAdapter(emptyList())
+        val adapter = OrderAdapter(emptyList()) { order ->
+            viewModel.deleteOrder(order)
+        }
         recyclerView.adapter = adapter
 
         viewModel.allOrders.observe(viewLifecycleOwner, Observer { orders ->

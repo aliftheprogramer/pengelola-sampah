@@ -16,4 +16,11 @@ class OrderViewModel(private val jemputSampahDao: JemputSampahDao) : ViewModel()
             jemputSampahDao.insert(order)
         }
     }
+
+
+    fun deleteOrder(order: JemputSampah) {
+        viewModelScope.launch {
+            jemputSampahDao.delete(order)
+        }
+        }
 }

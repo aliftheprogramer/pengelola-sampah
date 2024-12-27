@@ -325,6 +325,15 @@
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/spPaymentMethod"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/spinner_background"
+                            android:entries="@array/payment_methods"
+                            android:spinnerMode="dropdown" />
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -347,7 +356,10 @@
                 app:elevation="5dp"
                 app:rippleColor="@color/colorPrimaryDark" />
 
+
         </LinearLayout>
+
+
 
     </androidx.core.widget.NestedScrollView>
 
