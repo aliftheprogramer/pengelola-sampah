@@ -32,6 +32,16 @@ class ProfilFragment : Fragment() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
+
+        binding.buttonUbahProfil.setOnClickListener {
+            val intent = Intent(activity, UbahProfilActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.menuPanduan.setOnClickListener {
+            val intent = Intent(activity, PanduanActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

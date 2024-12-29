@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#F7FAF9"
     android:padding="16dp">
@@ -19,54 +18,59 @@
         android:paddingVertical="12dp" />
 
     <!-- Profile Section -->
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:padding="16dp"
-        android:elevation="2dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        android:layout_gravity="center_horizontal">
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp">
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/img_1"
-            android:background="@drawable/img_2"
-            android:padding="8dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:text="Sitalek Long"
-            android:textSize="16sp"
-            android:textColor="#000000"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="4dp"
-            android:text="0 Ms Points"
-            android:textSize="14sp"
-            android:textColor="#FFA726" />
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/img_1"
+                android:background="@drawable/img_2"
+                android:padding="8dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Ubah Profil"
-            android:textAllCaps="false"
-            android:backgroundTint="#E8F5E9"
-            android:textColor="#4CAF50" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="Sitalek Long"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:text="0 Ms Points"
+                android:textSize="14sp"
+                android:textColor="#FFA726" />
+
+            <Button
+                android:id="@+id/buttonUbahProfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Ubah Profil"
+                android:textAllCaps="false"
+                android:backgroundTint="#E8F5E9"
+                android:textColor="#4CAF50" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <!-- Menu Section -->
     <LinearLayout
@@ -79,6 +83,7 @@
 
         <!-- Panduan -->
         <LinearLayout
+            android:id="@+id/menuPanduan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -88,7 +93,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/img_6" />
+                android:src="@drawable/img_6" />  <!-- Ganti dengan ikon yang sesuai -->
 
             <TextView
                 android:layout_width="0dp"
@@ -100,9 +105,10 @@
                 android:textColor="#000000" />
 
             <ImageView
+                android:id="@+id/iconPanduan"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/img_3" />
+                android:src="@drawable/img_3" />  <!-- Ganti dengan ikon yang sesuai -->
         </LinearLayout>
 
         <View
@@ -121,7 +127,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/img_4" />
+                android:src="@drawable/img_4" />  <!-- Ganti dengan ikon yang sesuai -->
 
             <TextView
                 android:layout_width="0dp"
@@ -135,7 +141,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/img_3" />
+                android:src="@drawable/img_3" />  <!-- Ganti dengan ikon yang sesuai -->
         </LinearLayout>
 
         <!-- Kebijakan Privasi -->
@@ -149,7 +155,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/img_5" />
+                android:src="@drawable/img_5" />  <!-- Ganti dengan ikon yang sesuai -->
 
             <TextView
                 android:layout_width="0dp"
@@ -157,6 +163,34 @@
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
                 android:text="Kebijakan Privasi"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/img_3" />  <!-- Ganti dengan ikon yang sesuai -->
+        </LinearLayout>
+
+        <!-- Pertanyaan Umum -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/img_8" />  <!-- Ganti dengan ikon yang sesuai -->
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:text="Media Sosial"
                 android:textSize="14sp"
                 android:textColor="#000000" />
 
@@ -171,6 +205,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Logout"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#E57373"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </LinearLayout>

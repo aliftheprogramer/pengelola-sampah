@@ -34,6 +34,11 @@
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="false" />
+
+        <activity android:name=".view.main.ui.profil.UbahProfilActivity" />
+
+        <activity android:name=".view.main.ui.profil.PanduanActivity" />
+
     </application>
 
 </manifest>
