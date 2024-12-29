@@ -19,6 +19,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="your_web_client_id">500060358006-g7d0vsku3sj1h0veanjg8s5qisv1oqm2.apps.googleusercontent.com</string>
     <string name="saldo_riwayat_icon"><![CDATA[Saldo & Riwayat Icon]]></string>
+    <string name="notification_icon">Notification Icon</string>
 
 
     <string-array name="payment_methods">
