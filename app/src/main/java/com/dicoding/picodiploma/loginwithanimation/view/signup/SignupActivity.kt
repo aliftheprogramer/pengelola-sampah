@@ -59,7 +59,7 @@ class SignupActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        val user = User(email = email, password = password, isLogin = true)
+                        val user = User(id = 0, email = email, password = password, isLogin = 0, ggPoints = 0)
                         signupViewModel.insertUser(user)
                         AlertDialog.Builder(this).apply {
                             setTitle("Yeah!")

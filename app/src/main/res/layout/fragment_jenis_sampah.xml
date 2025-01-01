@@ -18,10 +18,10 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorPrimary"
+                android:background="@color/white"
                 app:navigationIcon="@drawable/ic_back"
                 app:title="Jenis Sampah"
-                app:titleTextColor="@android:color/white" />
+                app:titleTextColor="@color/black" />
 
 
             <androidx.cardview.widget.CardView

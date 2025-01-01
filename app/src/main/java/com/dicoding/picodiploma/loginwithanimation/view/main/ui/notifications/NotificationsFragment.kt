@@ -36,7 +36,7 @@ class NotificationsFragment : Fragment() {
             val adapter = NotificationsAdapter(notifications)
             binding.recyclerViewNotifications.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerViewNotifications.adapter = adapter
-            binding.recyclerViewNotifications.addItemDecoration(SpacingItemDecoration(8))
+            binding.recyclerViewNotifications.addItemDecoration(SpacingItemDecoration(10))
         })
     }
 

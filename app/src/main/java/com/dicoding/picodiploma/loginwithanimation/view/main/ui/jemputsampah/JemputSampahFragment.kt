@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -53,6 +54,13 @@ class JemputSampahFragment : Fragment() {
 
         val bottomNav = requireActivity().findViewById<View>(R.id.nav_view)
         bottomNav.visibility = View.GONE
+
+
+        binding.inputBerat.addTextChangedListener {
+            val berat = it.toString().toDoubleOrNull() ?: 0.0
+            val ggPoints = calculateGGPoints(berat)
+            binding.textGgPoints.text = "GG points: $ggPoints"
+        }
 
         binding.inputTanggal.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -101,6 +109,10 @@ class JemputSampahFragment : Fragment() {
         toolbar.setNavigationOnClickListener {
             findNavController().navigate(R.id.navigation_home)
         }
+    }
+
+    private fun calculateGGPoints(berat: Double): Int {
+        return (berat * 10).toInt() // Misalnya 1 kg = 10 GG points
     }
 
     override fun onDestroyView() {

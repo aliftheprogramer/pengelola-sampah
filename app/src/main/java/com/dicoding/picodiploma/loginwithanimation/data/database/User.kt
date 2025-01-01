@@ -5,8 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "user")
 data class User(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val isLogin: Int=   1, // Ubah ke Int (0 atau 1)
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val email: String,
     val password: String,
-    val isLogin: Boolean
+    val ggPoints: Int
 )

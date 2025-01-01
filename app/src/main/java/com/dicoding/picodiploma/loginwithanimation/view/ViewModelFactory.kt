@@ -31,7 +31,7 @@ class ViewModelFactory private constructor(
                 JemputSampahViewModel(userRepository) as T
             }
             modelClass.isAssignableFrom(OrderViewModel::class.java) -> {
-                OrderViewModel(userRepository.getJemputSampahDao()) as T
+                OrderViewModel(userRepository) as T
             }
             modelClass.isAssignableFrom(NotificationsViewModel::class.java) -> {
                 NotificationsViewModel(userRepository) as T

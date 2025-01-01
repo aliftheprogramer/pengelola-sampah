@@ -49,7 +49,8 @@
             android:id="@+id/tvStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Status"
+            android:text="Sudah Di konfirmasi"
+            android:textColor="@android:color/holo_green_light"
             android:textSize="16sp"
             android:textStyle="bold" />
 

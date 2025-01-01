@@ -33,7 +33,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var loginViewModel: LoginViewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -55,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        loginViewModel.saveSession(UserModel(email, "sample_token", true)) // Save session
+                        loginViewModel.saveSession(UserModel(email, password, "sample_token", true)) // Save session
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -69,8 +68,6 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                 }
-
-
         }
 
         binding.signInButton.setOnClickListener {
@@ -79,28 +76,28 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        val credentialManager = CredentialManager.create(this) //import from androidx.CredentialManager
+        val credentialManager = CredentialManager.create(this)
         val googleIdOption = GetGoogleIdOption.Builder()
             .setFilterByAuthorizedAccounts(false)
             .setServerClientId(getString(R.string.your_web_client_id))
             .build()
-        val request = GetCredentialRequest.Builder() //import from androidx.CredentialManager
+        val request = GetCredentialRequest.Builder()
             .addCredentialOption(googleIdOption)
             .build()
         lifecycleScope.launch {
             try {
-                val result: GetCredentialResponse = credentialManager.getCredential( //import from androidx.CredentialManager
+                val result: GetCredentialResponse = credentialManager.getCredential(
                     request = request,
                     context = this@LoginActivity,
                 )
                 handleSignIn(result)
-            } catch (e: GetCredentialException) { //import from androidx.CredentialManager
+            } catch (e: GetCredentialException) {
                 Log.d("Error", e.message.toString())
             }
         }
     }
+
     private fun handleSignIn(result: GetCredentialResponse) {
-        // Handle the successfully returned credential.
         when (val credential = result.credential) {
             is CustomCredential -> {
                 if (credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
@@ -111,12 +108,10 @@ class LoginActivity : AppCompatActivity() {
                         Log.e(TAG, "Received an invalid google id token response", e)
                     }
                 } else {
-                    // Catch any unrecognized custom credential type here.
                     Log.e(TAG, "Unexpected type of credential")
                 }
             }
             else -> {
-                // Catch any unrecognized credential type here.
                 Log.e(TAG, "Unexpected type of credential")
             }
         }
@@ -130,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
                     Log.d(TAG, "signInWithCredential:success")
                     val user: FirebaseUser? = auth.currentUser
                     user?.let {
-                        loginViewModel.saveSession(UserModel(it.email ?: "", "sample_token", true)) // Save session
+                        loginViewModel.saveSession(UserModel(it.email ?: "", "sample_token", true.toString())) // Save session
                     }
                     updateUI(user)
                 } else {
@@ -156,7 +151,6 @@ class LoginActivity : AppCompatActivity() {
             Log.w(TAG, "updateUI: user is null")
         }
     }
-
 
     companion object {
         private const val TAG = "LoginActivity"

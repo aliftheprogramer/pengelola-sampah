@@ -48,6 +48,12 @@ class UserRepository private constructor(
         return jemputSampahDao
     }
 
+    fun getUserDao(): UserDao {
+        return userDao
+    }
+
+    
+
     companion object {
         @Volatile
         private var instance: UserRepository? = null
