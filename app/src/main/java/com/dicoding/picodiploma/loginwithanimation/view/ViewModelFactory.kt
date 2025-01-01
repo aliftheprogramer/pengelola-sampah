@@ -4,17 +4,16 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.loginwithanimation.data.UserRepository
-import com.dicoding.picodiploma.loginwithanimation.data.database.datasampah.JemputSampahDao
 import com.dicoding.picodiploma.loginwithanimation.di.Injection
 import com.dicoding.picodiploma.loginwithanimation.view.login.LoginViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.main.MainViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.signup.SignupViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.main.ui.jemputsampah.JemputSampahViewModel
+import com.dicoding.picodiploma.loginwithanimation.view.main.ui.notifications.NotificationsViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.main.ui.order.OrderViewModel
 
 class ViewModelFactory private constructor(
-    private val userRepository: UserRepository,
-    private val jemputSampahDao: JemputSampahDao
+    private val userRepository: UserRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -32,7 +31,10 @@ class ViewModelFactory private constructor(
                 JemputSampahViewModel(userRepository) as T
             }
             modelClass.isAssignableFrom(OrderViewModel::class.java) -> {
-                OrderViewModel(jemputSampahDao) as T
+                OrderViewModel(userRepository.getJemputSampahDao()) as T
+            }
+            modelClass.isAssignableFrom(NotificationsViewModel::class.java) -> {
+                NotificationsViewModel(userRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
@@ -44,10 +46,8 @@ class ViewModelFactory private constructor(
 
         fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
-                val jemputSampahDao = Injection.provideDatabase(context)
                 instance ?: ViewModelFactory(
-                    Injection.provideRepository(context),
-                    jemputSampahDao
+                    Injection.provideRepository(context)
                 )
             }.also { instance = it }
     }

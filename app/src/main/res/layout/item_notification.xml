@@ -2,7 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/design_default_color_background">
 
     <ImageView
         android:id="@+id/iconNotification"
@@ -13,6 +14,7 @@
         android:backgroundTint="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginEnd="8dp"/>
 
     <TextView
@@ -31,6 +33,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         app:layout_constraintTop_toBottomOf="@id/textNotificationTitle"
+        app:layout_constraintStart_toEndOf="@id/iconNotification"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textNotificationDateTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/textNotificationBody"
         app:layout_constraintStart_toEndOf="@id/iconNotification"
         app:layout_constraintEnd_toEndOf="parent" />
 

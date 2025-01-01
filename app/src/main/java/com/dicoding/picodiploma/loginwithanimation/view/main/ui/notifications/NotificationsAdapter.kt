@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.picodiploma.loginwithanimation.R
+import com.dicoding.picodiploma.loginwithanimation.data.Notification
 import com.dicoding.picodiploma.loginwithanimation.databinding.ItemNotificationBinding
 
-data class Notification(val title: String, val body: String)
 
 class NotificationsAdapter(private val notifications: List<Notification>) :
     RecyclerView.Adapter<NotificationsAdapter.NotificationViewHolder>() {
@@ -17,6 +17,7 @@ class NotificationsAdapter(private val notifications: List<Notification>) :
         fun bind(notification: Notification) {
             binding.textNotificationTitle.text = notification.title
             binding.textNotificationBody.text = notification.body
+            binding.textNotificationDateTime.text = notification.dateTime
         }
     }
 
