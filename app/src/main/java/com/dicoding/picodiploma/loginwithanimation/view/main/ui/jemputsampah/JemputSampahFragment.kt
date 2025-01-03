@@ -2,6 +2,8 @@ package com.dicoding.picodiploma.loginwithanimation.view.main.ui.jemputsampah
 
 import android.Manifest
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
@@ -55,7 +57,6 @@ class JemputSampahFragment : Fragment() {
         val bottomNav = requireActivity().findViewById<View>(R.id.nav_view)
         bottomNav.visibility = View.GONE
 
-
         binding.inputBerat.addTextChangedListener {
             val berat = it.toString().toDoubleOrNull() ?: 0.0
             val ggPoints = calculateGGPoints(berat)
@@ -98,6 +99,14 @@ class JemputSampahFragment : Fragment() {
                 )
                 viewModel.saveJemputSampah(jemputSampah)
                 Toast.makeText(requireContext(), "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
+
+                // Simpan poin GG ke SharedPreferences
+                val ggPoints = calculateGGPoints(berat)
+                val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("GGPointsPrefs", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putInt("gg_points", ggPoints)
+                editor.apply()
+
                 requestNotificationPermission()
                 findNavController().navigate(R.id.navigation_home)
             } else {

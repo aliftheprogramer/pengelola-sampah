@@ -36,11 +36,13 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
+            <!-- fragment_order.xml -->
+
             <TextView
                 android:id="@+id/text_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp 100.000"
+                android:text="GG points: 0"
                 android:textSize="24sp"
                 android:textColor="#10B981"
                 android:textStyle="bold" />

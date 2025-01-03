@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Home Menu -->
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"
+        app:showAsAction="always"
+        android:contentDescription="Home"
+        app:tooltipText="Go to Home"
+        android:checked="true" />
 
+    <!-- Order Menu -->
     <item
         android:id="@+id/navigation_order"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Order" />
+        android:title="Order"
+        app:showAsAction="always"
+        android:contentDescription="Order"
+        app:tooltipText="Check Orders" />
 
+    <!-- Notifications Menu -->
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:title="@string/title_notifications"
+        app:showAsAction="always"
+        android:contentDescription="Notifications"
+        app:tooltipText="View Notifications" />
 
+    <!-- Profile Menu -->
     <item
         android:id="@+id/navigation_profil"
         android:icon="@drawable/ic_profile_black_24dp"
-        android:title="Profil" />
-
+        android:title="Profil"
+        app:showAsAction="always"
+        android:contentDescription="Profile"
+        app:tooltipText="View Profile" />
 </menu>
